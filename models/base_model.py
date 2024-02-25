@@ -5,7 +5,12 @@ from datetime import datetime
 
 
 class BaseModel():
-    ''' Class that defines all common attributes/methods for other classes. '''
+    '''
+    Attributes:
+        id (str): The unique identifier of the instance.
+        created_at (datetime): The datetime when the instance was created.
+        updated_at (datetime): The datetime when the instance was last updated.
+    '''
 
     def __init__(self):
         ''' Initializes a BaseModel instance with a unique ID,
