@@ -8,8 +8,8 @@ class BaseModel():
     ''' Class that defines all common attributes/methods for other classes. '''
 
     def __init__(self):
-        ''' Initializes a BaseModel instance with a unique ID, creation timestamp,
-        and update timestamp. '''
+        ''' Initializes a BaseModel instance with a unique ID,
+        creation timestamp,and update timestamp. '''
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
