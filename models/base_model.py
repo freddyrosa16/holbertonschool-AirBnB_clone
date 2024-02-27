@@ -15,16 +15,11 @@ class BaseModel():
         """ Initialization of the model class. """
         if kwargs:
             for key, value in kwargs.items():
-                if key != '__class__':
-                    if key in ('created_at', 'updated_at'):
-                        setattr(self, key, datetime.strptime(
-                            value, '%Y-%m-%dT%H:%M:%S.%f'))
-                    else:
-                        setattr(self, key, value)
-            if 'created_at' not in kwargs:
-                self.created_at = datetime.now()
-            if 'updated_at' not in kwargs:
-                self.updated_at = datetime.now()
+                if key in ['created_at', 'updated_at']:
+                    time_format = '%Y-%m-%dT%H:%M:%S.%f'
+                    self.__dict__[key] = datetime.strptime(value, time_format)
+                elif key != '__class__':
+                    self.__dict__[key] = value
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -42,8 +37,8 @@ class BaseModel():
 
     def to_dict(self):
         """ Converts the object to a dictionary representation. """
-        new_dict = dict(self.__dict__)
-        new_dict['__class__'] = self.__class__.__name__
-        new_dict['created_at'] = self.created_at.isoformat()
-        new_dict['updated_at'] = self.updated_at.isoformat()
-        return new_dict
+        obj_dict = self.__dict__.copy
+        obj_dict['__class__'] = self.__class__.__name__
+        obj_dict['created_at'] = self.created_at.isoformat()
+        obj_dict['updated_at'] = self.updated_at.isoformat()
+        return obj_dict
