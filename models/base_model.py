@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 ''' Class that defines all common attributes/methods for other classes. '''
+import models
 import uuid
 from datetime import datetime
 
@@ -10,11 +11,25 @@ class BaseModel():
     for other classes.
     '''
 
-    def __init__(self):
+    def __init__(self,  *args, **kwargs):
         ''' Initializes model class. '''
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key in ('created_at', 'updated_at'):
+                        setattr(self, key, datetime.strptime(
+                            value, '%Y-%m-%dT%H:%M:%S.%f'))
+                    else:
+                        setattr(self, key, value)
+            if 'created_at' not in kwargs:
+                self.created_at = datetime.now()
+            if 'updated_at' not in kwargs:
+                self.updated_at = datetime.now()
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         ''' Returns a string representation of the BaseModel instance. '''
