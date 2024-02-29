@@ -7,6 +7,9 @@ class HBNBCommand(cmd.Cmd):
     """Command interpreter for HBNB project."""
     prompt = "(hbnb) "
 
+    def do_create(self, arg):
+        """ Creates a new instance of BaseModel, saves it and prints the id. """
+
     def do_quit(self, arg):
         """ Quit command to exit the program. """
         return True
