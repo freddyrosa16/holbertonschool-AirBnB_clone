@@ -1,6 +1,6 @@
 # holbertonschool-AirBnB_clone
 
-AirBnB Clone project @Holberton: The goal of this project is to deploy a server with a simple copy of the AirBnB web app to demonstrate technical grasp (dare we say mastery?) of both front & backend development.
+AirBnB Clone project: The goal of this project is to deploy a server with a simple copy of the AirBnB web app to demonstrate technical grasp of backend development.
 
 The overall Project scope is:
 
@@ -27,3 +27,38 @@ Retrieve an object from a file, a database etc…
 Do operations on objects (count, compute stats, etc…)
 Update attributes of an object
 Destroy an object
+
+Operating In Interactive Mode:
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb)
+(hbnb)
+(hbnb) quit
+$
+
+Operating In Non-Interactive Mode:
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+$
+
