@@ -62,17 +62,17 @@
 }
 
 .max_guest {
-    background-image: url(/images/icon_group.png);
+    background-image: url(/web_static/images/icon_group.png);
     background-position: top;
 }
 
 .number_rooms {
-    background-image: url(/images/icon_bed.png);
+    background-image: url(/web_static/images/icon_bed.png);
     background-position: top;
 }
 
 .number_bathrooms {
-    background-image: url(/images/icon_bath.png);
+    background-image: url(/web_static/images/icon_bath.png);
     background-position: top;
 }
 
